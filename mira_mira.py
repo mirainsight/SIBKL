@@ -10,7 +10,7 @@ import time
 import plotly.express as px
 
 st.set_page_config(page_title="Plotting Demo", page_icon="📈")
-dataframe2 = pd.read_excel("C:/Users/Mirac/OneDrive/Documents/SIB/Cell_Health.xlsx")
+dataframe2 = pd.read_excel("Cell_Health.xlsx")
 st.title('Cell Health Database')
 
 
