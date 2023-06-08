@@ -6,7 +6,6 @@
 
 import streamlit as st
 import pandas as pd
-import time
 import plotly.express as px
 
 st.set_page_config(page_title="Plotting Demo", page_icon="📈")
