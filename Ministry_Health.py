@@ -165,10 +165,10 @@ if show_data and choose_columns:
     to_filter_columns_inc = st.multiselect("I want", df.columns)
     filtered_df = filtered_df.sort_values(by=to_filter_columns_inc)
     st.dataframe(filtered_df[to_filter_columns_inc])
-    st.header(f"There are {len(filtered_df)} such ministry ({percentage}% of all ministry).")
+    st.header(f"There are {len(filtered_df)} such ministries ({percentage}% of all ministries).")
 elif show_data: 
     st.dataframe(filtered_df)
-    st.subheader(f"There are {len(filtered_df)} such ministry ({percentage}% of all ministry).")
+    st.subheader(f"There are {len(filtered_df)} such ministries ({percentage}% of all ministries).")
 
 
 
