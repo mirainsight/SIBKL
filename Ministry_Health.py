@@ -11,7 +11,8 @@ import time
 import plotly.express as px
 from io import StringIO
 
-st.set_page_config(page_title="Mira's Work", page_icon="📈")
+st.set_page_config(page_title="Ministry Health", page_icon="🎸")
+st.title("Zone Health")
 st.header("Filter Data")
 
 # text_input = st.text_input(
