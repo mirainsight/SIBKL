@@ -11,7 +11,7 @@ import time
 import plotly.express as px
 from io import StringIO
 
-st.set_page_config(page_title="Mira's Work", page_icon="😎")
+st.set_page_config(page_title="Cell Health", page_icon="😎")
 st.title("Cell Health")
 st.header("Filter Data")
 
