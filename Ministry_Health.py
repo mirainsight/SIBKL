@@ -12,7 +12,7 @@ import plotly.express as px
 from io import StringIO
 
 st.set_page_config(page_title="Ministry Health", page_icon="🎸")
-st.title("Zone Health")
+st.title("Ministry Health")
 st.header("Filter Data")
 
 # text_input = st.text_input(
