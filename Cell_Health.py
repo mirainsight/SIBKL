@@ -11,15 +11,8 @@ import time
 import plotly.express as px
 from io import StringIO
 
-if "number_slider" not in st.session_state: 
-    st.session_state["number_slider"] = None
-if "1 number slider" not in st.session_state: 
-    st.session_state["1 number slider"] = None
-if "categorical slider" not in st.session_state: 
-    st.session_state["categorical slider"] = None
-if "categorical slider all" not in st.session_state: 
-    st.session_state["categorical slider all"] = None
 st.set_page_config(page_title="Mira's Work", page_icon="📈")
+st.header("Cell Health")
 st.header("Filter Data")
 
 # text_input = st.text_input(
