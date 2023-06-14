@@ -11,8 +11,8 @@ import time
 import plotly.express as px
 from io import StringIO
 
-st.set_page_config(page_title="Cell Info", page_icon="😎")
-st.title("Cell Info")
+st.set_page_config(page_title="Cell Grow", page_icon="🏫")
+st.title("Cell Grow")
 st.header("Filter Data")
 
 # text_input = st.text_input(
@@ -26,7 +26,7 @@ st.header("Filter Data")
 # if uploaded_file is not None:
 
 #     # Can be used wherever a "file-like" object is accepted:
-dataframe2 = pd.read_excel("Cell_Health2.xlsx")
+dataframe2 = pd.read_csv("Cell_Grow.csv")
 dataframe2 = dataframe2.replace(np.nan,'',regex=True)
 #     #st.write(dataframe)
 #     dataframe2 = pd.read_excel(uploaded_file, sheet_name=0)
@@ -165,10 +165,10 @@ if show_data and choose_columns:
     to_filter_columns_inc = st.multiselect("I want", df.columns)
     filtered_df = filtered_df.sort_values(by=to_filter_columns_inc)
     st.dataframe(filtered_df[to_filter_columns_inc])
-    st.header(f"There are {len(filtered_df)} such cell(s) ({percentage}% of all cells).")
+    st.header(f"There are {len(filtered_df)} such members(s) ({percentage}% of all members).")
 elif show_data: 
     st.dataframe(filtered_df)
-    st.subheader(f"There are {len(filtered_df)} such cell(s) ({percentage}% of all cells).")
+    st.subheader(f"There are {len(filtered_df)} such members(s) ({percentage}% of all members).")
 
 
 
