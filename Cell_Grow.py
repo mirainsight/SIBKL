@@ -11,7 +11,7 @@ import time
 import plotly.express as px
 from io import StringIO
 
-st.set_page_config(page_title="Cell Grow", page_icon="🏫")
+st.set_page_config(page_title="NWST Service Attendance", page_icon="🏫")
 st.title("NWST Attendance Database")
 st.header("Filter Data")
 
