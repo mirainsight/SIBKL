@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[1]:
+# In[14]:
 
 
 import streamlit as st
@@ -26,7 +26,7 @@ st.header("Filter Data")
 # if uploaded_file is not None:
 
 #     # Can be used wherever a "file-like" object is accepted:
-dataframe2 = pd.read_csv("Cell_Grow.csv")
+dataframe2 = pd.read_csv("C:/Users/miracle.wong/Documents/Cell_Grow.csv")
 dataframe2 = dataframe2.replace(np.nan,'',regex=True)
 #     #st.write(dataframe)
 #     dataframe2 = pd.read_excel(uploaded_file, sheet_name=0)
@@ -60,7 +60,7 @@ def filter_dataframe(df: pd.DataFrame) -> pd.DataFrame:
     for col in df.columns:
         if is_object_dtype(df[col]):
             try:
-                df[col] = pd.to_datetime(df[col])
+                df[col] = pd.to_datetime(df[col], format="%d/%m/%Y")
             except Exception:
                 pass
 
@@ -102,7 +102,9 @@ def filter_dataframe(df: pd.DataFrame) -> pd.DataFrame:
 
             elif is_categorical_dtype(df[column]) or df[column].nunique() < 200:
                 selected_all = st.checkbox('Select All', key=f"{column}")                  
-                values = df[column].unique().tolist()
+                values = ["ALL", "CG", "Ministry", "Leaders", "Anchor Street", "His Street Makers", "Home Street", "King Street",
+                "Legacy Street", "Life Street", "Royal Street", "Street Conquerors", "Street Fire", "Street Food", "Street Lights",
+                "Street Salt", "Via Dolorosa Street", "Core Team", "Frontline", "HYPE", "Visual Storytellers", "Worship", "Newcomers"]
                 values.sort()
                 if selected_all: 
                     user_cat_input = right.multiselect(
@@ -116,7 +118,9 @@ def filter_dataframe(df: pd.DataFrame) -> pd.DataFrame:
                         values,
                         #default=list(df[column].unique()),
                     )
-                df = df[df[column].isin(user_cat_input)]
+                    for i in user_cat_input: 
+                        df = df[df[column].str.contains(i)]
+
             elif is_numeric_dtype(df[column]):
                 _min = float(df[column].min())
                 _max = float(df[column].max())
@@ -138,7 +142,7 @@ def filter_dataframe(df: pd.DataFrame) -> pd.DataFrame:
                     ),
                 )
                 if len(user_date_input) == 2:
-                    user_date_input = tuple(map(pd.to_datetime, user_date_input))
+                    user_date_input = tuple(map(pd.to_datetime, user_date_input, format="%d/%m/%Y"))
                     start_date, end_date = user_date_input
                     df = df.loc[df[column].between(start_date, end_date)]
             else:
@@ -169,7 +173,5 @@ if show_data and choose_columns:
 elif show_data: 
     st.dataframe(filtered_df)
     st.subheader(f"There are {len(filtered_df)} such members(s) ({percentage}% of all members).")
-
-
 
 
