@@ -172,12 +172,7 @@ def filter_dataframe(df: pd.DataFrame) -> pd.DataFrame:
 #    except: 
 #        st.write("Please check input.")
     return df
-
-filtered_df = filter_dataframe(dataframe2)
-df = filtered_df
-percentage = round((len(filtered_df)/len(df))*100, 0)   
-filtered_df = filtered_df.sort_values(by=filtered_df.columns.tolist())
-
+df = dataframe2.copy()
 st.divider()
 st.header("Specify Time Frame")
 col_names = dataframe2.columns.values.tolist()
@@ -284,6 +279,12 @@ else:
     accepted_columns.insert(4, 'Attended')
     accepted_columns.insert(5, 'Absent')
     df = df[accepted_columns]
+filtered_df = filter_dataframe(df)
+df = filtered_df
+percentage = round((len(filtered_df)/len(df))*100, 0)   
+filtered_df = filtered_df.sort_values(by=filtered_df.columns.tolist())
+
+
 filtered_df = df.copy()
 st.divider()
 st.header("Filtered Data")
