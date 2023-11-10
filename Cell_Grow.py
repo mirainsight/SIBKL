@@ -268,14 +268,19 @@ else:
         i = st.checkbox(str(col_names[i+6]), value=1)
         services_count += 1
         test_list.append(i)
+        
     accepted_columns = col_names[0:4]
+    count = 0
     for i in range(start_index, end_index+1): 
-        accepted_columns.append(col_names[i+6])
+        if test_list[count] == 1: 
+            accepted_columns.append(col_names[i+6])    
+        count += 1
 #                 df[col_names[i+5]] = df[col_names[i+5]].replace(['Y'], 1)
 #                 df[col_names[i+5]] = df[col_names[i+5]].replace(['N'], 0)
+    
     df = df[accepted_columns]
-    df['Attended'] = df.apply(lambda x: str(x.eq("Y").sum())+'/'+str(services_count), axis=1)
-    df['Absent'] = df.apply(lambda x: str(x.eq("N").sum())+'/'+str(services_count), axis=1)
+    df['Attended'] = df.apply(lambda x: str(x.eq("Y").sum())+'/'+str(sum(test_list)), axis=1)
+    df['Absent'] = df.apply(lambda x: str(x.eq("N").sum())+'/'+str(sum(test_list)), axis=1)
     accepted_columns.insert(4, 'Attended')
     accepted_columns.insert(5, 'Absent')
     df = df[accepted_columns]
