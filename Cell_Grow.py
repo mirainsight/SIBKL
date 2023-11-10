@@ -243,7 +243,7 @@ elif user_time_input == "Custom":
     )
 
     start_date, end_date = user_date_input
-st.write(f"Chosen start date: {start_date}, end date: {end_date}")
+st.markdown(f"Showing dates from: *{start_date}-{end_date}*")
 list_service_times = service_times.tolist()
 if start_date > service_times.max(): 
     st.write("There are no such services.")
