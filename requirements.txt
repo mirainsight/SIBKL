@@ -4,4 +4,4 @@ plotly.express
 openpyxl
 numpy
 datetime
-dateutil.relativedelta
+dateutil
