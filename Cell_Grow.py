@@ -100,7 +100,7 @@ def filter_dataframe(df: pd.DataFrame) -> pd.DataFrame:
                 )
                 df = df[df[column]==user_num_input]
 
-            elif is_categorical_dtype(df[column]) or df[column].nunique() < 200:
+            elif is_categorical_dtype(df[column]) or df[column].nunique() < 500:
                 selected_all = st.checkbox('Select All', key=f"{column}")                  
                 values = ["ALL", "CG", "Ministry", "Leaders", "Anchor Street", "His Street Makers", "Home Street", "King Street",
                 "Legacy Street", "Life Street", "Royal Street", "Street Conquerors", "Street Fire", "Street Food", "Street Lights",
