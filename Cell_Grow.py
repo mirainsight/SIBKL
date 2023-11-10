@@ -12,7 +12,7 @@ import plotly.express as px
 from io import StringIO
 
 st.set_page_config(page_title="Cell Grow", page_icon="🏫")
-st.title("Cell Grow")
+st.title("NWST Attendance Database")
 st.header("Filter Data")
 
 # text_input = st.text_input(
