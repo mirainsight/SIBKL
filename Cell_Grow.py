@@ -13,7 +13,7 @@ from dateutil.relativedelta import relativedelta
 
 st.set_page_config(page_title="Cell Grow", page_icon="🏫")
 st.title("Cell Grow")
-st.header("Filter Data")
+
 
 # text_input = st.text_input(
 #     "Label your database 👇",
@@ -53,6 +53,7 @@ def filter_dataframe(df: pd.DataFrame) -> pd.DataFrame:
     Returns:
         pd.DataFrame: Filtered dataframe
     """
+    st.header("Filter Data")
     df = df.copy()
 
     # Try to convert datetimes into a standard format (datetime, no timezone)
