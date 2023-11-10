@@ -26,7 +26,7 @@ st.header("Filter Data")
 # if uploaded_file is not None:
 
 #     # Can be used wherever a "file-like" object is accepted:
-dataframe2 = pd.read_csv("Cell_Grow.xlsx")
+dataframe2 = pd.read_excel("Cell_Grow.xlsx")
 dataframe2 = dataframe2.replace(np.nan,'',regex=True)
 #     #st.write(dataframe)
 #     dataframe2 = pd.read_excel(uploaded_file, sheet_name=0)
