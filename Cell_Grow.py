@@ -26,7 +26,7 @@ st.header("Filter Data")
 # if uploaded_file is not None:
 
 #     # Can be used wherever a "file-like" object is accepted:
-dataframe2 = pd.read_csv("Cell_Grow.csv")
+dataframe2 = pd.read_excel("NWST_Attendance.xlsx")
 dataframe2 = dataframe2.replace(np.nan,'',regex=True)
 #     #st.write(dataframe)
 #     dataframe2 = pd.read_excel(uploaded_file, sheet_name=0)
@@ -174,7 +174,7 @@ def filter_dataframe(df: pd.DataFrame) -> pd.DataFrame:
     return df
 
 filtered_df = filter_dataframe(dataframe2)
-df = dataframe2
+df = filtered_df
 percentage = round((len(filtered_df)/len(df))*100, 0)   
 filtered_df = filtered_df.sort_values(by=filtered_df.columns.tolist())
 
@@ -243,7 +243,7 @@ elif user_time_input == "Custom":
     )
 
     start_date, end_date = user_date_input
-st.write(f"Showing dates from: {start_date}-{end_date}")
+st.markdown(f"Showing dates from: **{start_date} to {end_date}**")
 list_service_times = service_times.tolist()
 if start_date > service_times.max(): 
     st.write("There are no such services.")
@@ -279,6 +279,7 @@ else:
     accepted_columns.insert(4, 'Attended')
     accepted_columns.insert(5, 'Absent')
     df = df[accepted_columns]
+filtered_df = df.copy()
 st.divider()
 st.header("Filtered Data")
 show_data = st.checkbox('Show Data')
