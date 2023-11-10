@@ -4,4 +4,3 @@ plotly.express
 openpyxl
 numpy
 datetime
-dateutil
