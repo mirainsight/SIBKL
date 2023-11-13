@@ -245,43 +245,43 @@ if start_date > service_times.max():
     st.write("There are no such services. Finding all time attendance instead.")
     end_date = service_times.max()
     start_date = service_times.min()  
-else: 
-    start_index = None
-    end_index = None
-    for date in list_service_times: 
-        if date >= start_date: 
-            start_index = list_service_times.index(date)
-            break
-    reversed_service = list_service_times.copy()
-    reversed_service.sort(reverse=True)
-    for date in reversed_service: 
-        if date <= end_date and (date >= start_date): 
-            end_index = list_service_times.index(date)
-            break
-    if start_index == None or end_index == None: 
-        st.write("Range too small. Please try a bigger range.")
-    test_list = []
-    services_count = 0
-    for i in range(start_index, end_index+1): 
-        i = st.checkbox(str(col_names[i+6]), value=1)
-        services_count += 1
-        test_list.append(i)
-        
-    accepted_columns = col_names[0:4]
-    count = 0
-    for i in range(start_index, end_index+1): 
-        if test_list[count] == 1: 
-            accepted_columns.append(col_names[i+6])    
-        count += 1
+
+start_index = None
+end_index = None
+for date in list_service_times: 
+    if date >= start_date: 
+        start_index = list_service_times.index(date)
+        break
+reversed_service = list_service_times.copy()
+reversed_service.sort(reverse=True)
+for date in reversed_service: 
+    if date <= end_date and (date >= start_date): 
+        end_index = list_service_times.index(date)
+        break
+if start_index == None or end_index == None: 
+    st.write("Range too small. Please try a bigger range.")
+test_list = []
+services_count = 0
+for i in range(start_index, end_index+1): 
+    i = st.checkbox(str(col_names[i+6]), value=1)
+    services_count += 1
+    test_list.append(i)
+    
+accepted_columns = col_names[0:4]
+count = 0
+for i in range(start_index, end_index+1): 
+    if test_list[count] == 1: 
+        accepted_columns.append(col_names[i+6])    
+    count += 1
 #                 df[col_names[i+5]] = df[col_names[i+5]].replace(['Y'], 1)
 #                 df[col_names[i+5]] = df[col_names[i+5]].replace(['N'], 0)
-    
-    df = df[accepted_columns]
-    df['Attended'] = df.apply(lambda x: str(x.eq("Y").sum())+'/'+str(sum(test_list)), axis=1)
-    df['Absent'] = df.apply(lambda x: str(x.eq("N").sum())+'/'+str(sum(test_list)), axis=1)
-    accepted_columns.insert(4, 'Attended')
-    accepted_columns.insert(5, 'Absent')
-    df = df[accepted_columns]
+
+df = df[accepted_columns]
+df['Attended'] = df.apply(lambda x: str(x.eq("Y").sum())+'/'+str(sum(test_list)), axis=1)
+df['Absent'] = df.apply(lambda x: str(x.eq("N").sum())+'/'+str(sum(test_list)), axis=1)
+accepted_columns.insert(4, 'Attended')
+accepted_columns.insert(5, 'Absent')
+df = df[accepted_columns]
 filtered_df = filter_dataframe(df)
 df = filtered_df
 percentage = round((len(filtered_df)/len(df))*100, 0)   
