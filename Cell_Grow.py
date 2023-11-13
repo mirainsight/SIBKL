@@ -267,7 +267,7 @@ for i in range(start_index, end_index+1):
     services_count += 1
     test_list.append(i)
     
-accepted_columns = col_names[0:4]
+accepted_columns = col_names[2:4]
 count = 0
 for i in range(start_index, end_index+1): 
     if test_list[count] == 1: 
@@ -278,9 +278,7 @@ for i in range(start_index, end_index+1):
 
 df = df[accepted_columns]
 df['Attended'] = df.apply(lambda x: str(x.eq("Y").sum())+'/'+str(sum(test_list)), axis=1)
-df['Absent'] = df.apply(lambda x: str(x.eq("N").sum())+'/'+str(sum(test_list)), axis=1)
-accepted_columns.insert(4, 'Attended')
-accepted_columns.insert(5, 'Absent')
+accepted_columns.insert(3, 'Attended')
 df = df[accepted_columns]
 filtered_df = filter_dataframe(df)
 df = filtered_df
@@ -289,15 +287,16 @@ filtered_df = filtered_df.sort_values(by=filtered_df.columns.tolist())
 
 
 filtered_df = df.copy()
+filtered_df = df
 st.divider()
 st.header("Filtered Data")
-show_data = st.checkbox('Show Data')
+#show_data = st.checkbox('Show Data')
 choose_columns = st.checkbox("Choose Columns")
 if show_data and choose_columns:
     to_filter_columns_inc = st.multiselect("I want", df.columns)
     filtered_df = filtered_df.sort_values(by=to_filter_columns_inc)
     st.dataframe(filtered_df[to_filter_columns_inc])
     st.header(f"There are {len(filtered_df)} such members(s) ({percentage}% of all members).")
-elif show_data: 
-    st.dataframe(filtered_df)
-    st.subheader(f"There are {len(filtered_df)} such members(s) ({percentage}% of all members).")
+
+st.dataframe(filtered_df)
+st.subheader(f"There are {len(filtered_df)} such members(s) ({percentage}% of all members).")
