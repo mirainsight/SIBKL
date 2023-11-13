@@ -287,7 +287,6 @@ filtered_df = filtered_df.sort_values(by=filtered_df.columns.tolist())
 
 
 filtered_df = df.copy()
-filtered_df = df
 st.divider()
 st.header("Filtered Data")
 #show_data = st.checkbox('Show Data')
