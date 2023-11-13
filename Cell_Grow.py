@@ -291,7 +291,7 @@ st.divider()
 st.header("Filtered Data")
 #show_data = st.checkbox('Show Data')
 choose_columns = st.checkbox("Choose Columns")
-if show_data and choose_columns:
+if choose_columns:
     to_filter_columns_inc = st.multiselect("I want", df.columns)
     filtered_df = filtered_df.sort_values(by=to_filter_columns_inc)
     st.dataframe(filtered_df[to_filter_columns_inc])
