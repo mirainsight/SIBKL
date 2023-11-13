@@ -287,6 +287,7 @@ filtered_df = filtered_df.sort_values(by=filtered_df.columns.tolist())
 
 
 filtered_df = df.copy()
+filtered_df.reset_index()
 filtered_df.index = np.arange(1, len(filtered_df) + 1)
 st.divider()
 st.header("Filtered Data")
