@@ -242,7 +242,9 @@ elif user_time_input == "Custom":
 st.markdown(f"Showing dates from: **{start_date} to {end_date}**")
 list_service_times = service_times.tolist()
 if start_date > service_times.max(): 
-    st.write("There are no such services.")
+    st.write("There are no such services. Finding all time attendance instead.")
+    end_date = service_times.max()
+    start_date = service_times.min()  
 else: 
     start_index = None
     end_index = None
