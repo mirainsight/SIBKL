@@ -278,7 +278,7 @@ for i in range(start_index, end_index+1):
 
 df = df[accepted_columns]
 df['Attended'] = df.apply(lambda x: str(x.eq("Y").sum())+'/'+str(sum(test_list)), axis=1)
-accepted_columns.insert(3, 'Attended')
+accepted_columns.insert(1, 'Attended')
 df = df[accepted_columns]
 filtered_df = filter_dataframe(df)
 df = filtered_df
