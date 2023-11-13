@@ -12,7 +12,7 @@ from dateutil.relativedelta import relativedelta
 
 
 st.set_page_config(page_title="Cell Grow", page_icon="🏫")
-st.title("Cell Grow")
+st.title("NWST Check In Attendance")
 
 
 # text_input = st.text_input(
