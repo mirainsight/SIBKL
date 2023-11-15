@@ -11,7 +11,7 @@ from dateutil.relativedelta import relativedelta
 
 
 
-st.set_page_config(page_title="NWST Attendance", page_icon="🏫")
+st.set_page_config(page_title="NWST Attendance", page_icon="💯")
 st.title("NWST Check In Attendance")
 
 
